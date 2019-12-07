@@ -6,13 +6,22 @@ class Heap(object):
         self.heap = [0] * self.heal_length
 
     def driftDown(index):
-        child_ind = index*2
-        right_child = child_ind + 1
-        left_child = child_ind
+        left_child = index*2
+        right_child = index*2 + 1
+        min_child = left_child
         temp = self.heap[index]
-        while child_ind <= self.capacity:
+        while min_child <= self.capacity:
             if self.heap[left_child] > self.heap[right_child]:
-                child_ind = right_child
+                min_child = right_child
             else:
-                child_ind = left_child
-                
+                min_child = left_child
+            if self.heap[min_child] < self.heap[index]:
+                temp = self.heap[index]
+                self.heap[index] = self.heap[min_child]
+                self.heap[min_child] = temp
+            else:
+                return
+            index = min_child
+            min_child *= 2
+
+    def driftDownTest():
