@@ -18,24 +18,19 @@ def merge(left, right):
     right_idx = 0
     left_val = 0
     right_val = 0
-    while left_idx < len(left) or right_idx < len(right):
-        if left_idx >= len(left):
-            left_val = float('inf')
-        else:
-            left_val = left[left_idx]
-
-        if right_idx >= len(right):
-            right_val = float('inf')
-        else:
-            right_val = right[right_idx]
-        print('left: [idx: {} val: {}] right: [idx: {} val: {}]'.format(left_idx, left_val, right_idx, right_val))
-
+    while left_idx < len(left) and right_idx < len(right):
+        left_val = left[left_idx]
+        right_val = right[right_idx]
         if left_val < right_val:
             ret_arr.append(left_val)
             left_idx += 1
         else:
             ret_arr.append(right_val)
             right_idx += 1
+    if left_idx >= len(left):
+        ret_arr += right[right_idx:]
+    if right_idx >= len(right):
+        ret_arr += left[left_idx:]
     print('popping out merge: ', ret_arr)
     print('---------exit merge subroutine---------')
     return ret_arr
