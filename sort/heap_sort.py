@@ -3,12 +3,14 @@ sys.path.append('/home/eshui/interview_prep/ds')
 from heap import Heap
 
 def heap_sort(A):
-    ret_arr = []
     heap = Heap(len(A)+1)
+    # stage 1
     heap.buildHeap(A)
-    for i in range(len(A)):
-        ret_arr.append(heap.deleteMax())
-    return ret_arr[::-1]
+    # stage 2
+    for ind, val in enumerate(range(len(A))):
+        val = heap.deleteMax()
+        heap.heap[heap.capacity-ind-1] = val
+    return heap.heap[1:]
 
 def main():
     A = [2, 42, 1, 94, 4, 3, 321]
