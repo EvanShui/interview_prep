@@ -6,12 +6,12 @@ def partition(A):
             s += 1
             A[s], A[i] = A[i], A[s]
     A[0],A[s] = A[s],A[0]
-    return A
+    return s
 
 def main():
     A = [4,1,10,8,7,12,9,2,15]
     A = partition(A)
-    assert(A == [2,1,4,8,7,12,9,10,15])
+    assert(A == 2)
 
 if __name__ == '__main__':
     main()
