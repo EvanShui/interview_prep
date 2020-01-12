@@ -15,8 +15,7 @@ def max_jobs(jobs):
             del jobs[0]
         else:
             del jobs[0]
-    for job in S:
-        print(job)
+    return S
 
 def test_1():
     lst = [Job(0, 6), Job(1,4), Job(3,5), Job(3, 8), Job(4, 7), Job(5,9),
@@ -25,7 +24,13 @@ def test_1():
     return lst
 
 def main():
-    max_jobs(test_1()) 
+    jobs = max_jobs(test_1())
+    assert(jobs[0].s == 1)
+    assert(jobs[0].f == 4)
+    assert(jobs[1].s == 4)
+    assert(jobs[1].f == 7)
+    assert(jobs[2].s == 8)
+    assert(jobs[2].f == 11)
 
 if __name__ == '__main__':
     main()
